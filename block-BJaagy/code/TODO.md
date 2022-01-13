@@ -1,6 +1,36 @@
 1. Create a function by your choice that accepts a callback function.
 
+```js
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function square(num) {
+  return num * num;
+}
+
+function doubleTheValue(arr, cb) {
+  let output = [];
+  for (let i = 1; i <= arr.length; i++) {
+    output.push(cb(i));
+  }
+  return output;
+}
+
+let result = doubleTheValue(numbers, square);
+
+console.log(result);
+```
+
 2. Create a function by you choice that returns a function reference.
+
+```js
+function score() {
+  let count = 0;
+  return function (point) {
+    count += point;
+    return score;
+  };
+}
+```
 
 3. Create a higher order function called `map` that takes two inputs:
    - An array of numbers/string/boolean etc
@@ -10,6 +40,13 @@ Have `map` return a new array filled with values that are the result of the 'cal
 
 ```js
 // Your code goes here
+function map(arr, cb) {
+  let output = [];
+  for (let i = 1; i <= arr.length; i++) {
+    output.push(cb(arr[i], i, arr));
+  }
+  return output;
+}
 
 // Test Your Code
 function multiplyByTwo(n) {
@@ -24,10 +61,17 @@ multiplyByTwo(2); //-> 4
 
 ```js
 // Your code goes here
+function forEach(arr, cb) {
+  let output = [];
+  for (let i = 0; i < arr.length; i++) {
+    cb(arr[i], i, arr);
+  }
+  return output;
+}
 
 // Test Your Code
-let alphabet = '';
-let letters = ['a', 'b', 'c', 'd'];
+let alphabet = "";
+let letters = ["a", "b", "c", "d"];
 forEach(letters, function (char) {
   alphabet += char;
 });
@@ -38,6 +82,13 @@ console.log(alphabet); //prints 'abcd'
 
 ```js
 // Test Your Code
+function filter(arr, cb) {
+  let output = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (cb(arr[i], i, arr)) output.push(arr[i]);
+  }
+  return output;
+}
 
 var numbers = [1, 3, 5, 4, 7, 89, 234, 20];
 let even = filter(numbers, function (n) {
