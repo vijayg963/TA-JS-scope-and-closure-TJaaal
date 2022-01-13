@@ -1,7 +1,7 @@
 Find the output of the code snippets below:
 
 ```js
-console.log(numA + numB); //51
+console.log(numA + numB); // NaN
 var numA = 21,
   numB = 30;
 ```
@@ -9,7 +9,7 @@ var numA = 21,
 Find the output of the code snippets below:
 
 ```js
-console.log(numA + numB); //51
+console.log(numA + numB); // ReferenceError
 let numA = 21,
   numB = 30;
 ```
@@ -47,7 +47,7 @@ function sayHello() {
 Find the output of the code snippets below:
 
 ```js
-sayHello(); // Tyrion
+sayHello(); //  ReferenceError  :username is not define
 let username = "Tyrion";
 function sayHello() {
   console.log(username);
@@ -124,5 +124,5 @@ let sayHello = () => {
   console.log(username);
   let username = "John";
 };
-sayHello(); // ReferenceError: Cannot access 'username' before initialization
+sayHello(); // ReferenceError: Cannot access 'username' before initialization which is in function
 ```
