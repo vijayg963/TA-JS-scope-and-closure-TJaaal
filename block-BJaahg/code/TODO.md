@@ -183,6 +183,7 @@ console.log(name);
 if (true) {
   var name = "Arya Stark";
 }
+
 console.log(name);
 
 // Arya Stark
@@ -216,6 +217,7 @@ console.log(i);
 for (let i = 0; i < 20; i++) {
   //
 }
+
 console.log(i);
 
 // let is in block scope so we can't access the value of i.
