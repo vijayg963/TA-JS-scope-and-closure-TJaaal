@@ -98,12 +98,17 @@ To build the object, `objectWithArrayValues` will pass each value of the first a
 In the final object the key will be the value form the first array like `hi` and value will be an array of values returned from each function like `['HI', 'Hi', 'HiHi']`
 
 ```js
-function objOfMatchesWithArray(array1, array2, callback) {}
+function objOfMatchesWithArray(array1, callbacks) {
+  return array1.reduce((acc, cv, index) => {
+    acc[cv] = callbacks.map((fn) => fn(cv));
+    return acc;
+  }, {});
+}
 
 // TEST
 console.log(
   objOfMatchesWithArray(
-    ["hi", "howdy", "bye"],
+    ["hi", "bye", "later"],
     [
       function (str) {
         return str.toUpperCase();
@@ -138,7 +143,15 @@ Create a function named `schedule` which accept two arguments an array of functi
 The function `schedule` will execute the function at first index after the value in value on first index in second array. i.e execute `sayHi` after `1` second and `sayHello` after `2` second.
 
 ```js
-function schedule() {}
+function schedule(callbacks, allTimes) {
+  if (callbacks.length !== allTimes.length) {
+    alert("Length is not same!");
+    return;
+  }
+  callbacks.forEach((fn, i) => {
+    setTimeout(fn, allTimes[i] * 1000);
+  });
+}
 
 function sayHi() {
   console.log("Hi");
